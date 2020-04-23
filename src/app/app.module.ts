@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { LoginModule } from './login/login.module';
+import { WelcomeModule } from './pages/welcome/welcome.module';
 
 registerLocaleData(en);
 
@@ -24,7 +26,10 @@ registerLocaleData(en);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
+    LoginModule,
+    WelcomeModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

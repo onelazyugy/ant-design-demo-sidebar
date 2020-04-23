@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { LoginComponent } from './login.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
-import { WelcomeComponent } from './welcome.component';
+
 
 @NgModule({
   declarations: [
-    WelcomeComponent
+    LoginComponent
   ],
   imports: [
     NzButtonModule,
@@ -17,4 +17,4 @@ import { WelcomeComponent } from './welcome.component';
   providers: [],
   bootstrap: []
 })
-export class WelcomeModule { }
+export class LoginModule { }
