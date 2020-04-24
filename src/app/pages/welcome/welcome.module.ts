@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome.component';
+import { AntDesignCommonModule } from 'src/app/ant-design-common.module';
+import { ShareModule } from 'src/app/share/share.module';
 
 @NgModule({
   declarations: [
     WelcomeComponent
   ],
   imports: [
-    NzButtonModule,
-    NzInputModule,
-    FormsModule
+    FormsModule,
+    AntDesignCommonModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: []

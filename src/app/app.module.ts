@@ -27,7 +27,7 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+
     LoginModule,
     WelcomeModule
   ],
