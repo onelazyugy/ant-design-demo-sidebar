@@ -11,6 +11,9 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { LoginModule } from './pages/login/login.module';
 import { WelcomeModule } from './pages/welcome/welcome.module';
+import { RxjsModule } from './pages/rxjs/rxjs.module';
+import { WorkModule } from './pages/work/work.module';
+import { EatModule } from './pages/eat/eat.module';
 
 registerLocaleData(en);
 
@@ -27,7 +30,10 @@ registerLocaleData(en);
     BrowserAnimationsModule,
 
     LoginModule,
-    WelcomeModule
+    WelcomeModule,
+    RxjsModule,
+    WorkModule,
+    EatModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
