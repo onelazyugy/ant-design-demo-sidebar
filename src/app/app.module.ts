@@ -14,6 +14,8 @@ import { WelcomeModule } from './pages/welcome/welcome.module';
 import { RxjsModule } from './pages/rxjs/rxjs.module';
 import { WorkModule } from './pages/work/work.module';
 import { EatModule } from './pages/eat/eat.module';
+import { SleepModule } from './pages/sleep/sleep.module';
+import { ChoresModule } from './pages/chores/chores.module';
 
 registerLocaleData(en);
 
@@ -33,7 +35,9 @@ registerLocaleData(en);
     WelcomeModule,
     RxjsModule,
     WorkModule,
-    EatModule
+    EatModule,
+    SleepModule,
+    ChoresModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
