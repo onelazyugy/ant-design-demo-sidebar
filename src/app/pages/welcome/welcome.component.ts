@@ -15,7 +15,7 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     //select a slice of your state
-    //you can subscribe here but we use async in the template instead.
+    //you can subscribe here but we use async pipe in the template instead.
     this.tasks = this.store.select('welcomeTask');
   }
 

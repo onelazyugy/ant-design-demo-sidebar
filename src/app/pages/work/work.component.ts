@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkService } from 'src/app/service/work.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-work',
@@ -7,10 +9,12 @@ import { WorkService } from 'src/app/service/work.service';
   styleUrls: ['./work.component.css']
 })
 export class WorkComponent implements OnInit {
-
-  constructor(private workService: WorkService) { }
+  tasks: Observable<{ tasks: string[] }>;
+  
+  constructor(private workService: WorkService, private store: Store<{ welcomeTask: { tasks: string[] } }>) { }
 
   ngOnInit() {
+    this.tasks = this.store.select('welcomeTask');
   }
 
   addMultipleTasks() {
