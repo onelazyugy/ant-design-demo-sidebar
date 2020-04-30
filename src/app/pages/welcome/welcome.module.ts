@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     AntDesignCommonModule,
     ShareModule,
-    CommonModule
+    CommonModule //why need to import it here since ShareModule is import here
   ],
   providers: [],
   bootstrap: []
