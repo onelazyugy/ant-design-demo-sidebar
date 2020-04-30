@@ -1,3 +1,4 @@
+//alias import
 import * as WelcomeTasksActions from './welcome.action';
 
 const initlaTasks = {
@@ -9,7 +10,10 @@ const initlaTasks = {
     ]
 };
 
-export function welcomeTaskReducer(state = initlaTasks, action: WelcomeTasksActions.AddTask) {
+export function welcomeTaskReducer(
+    state = initlaTasks, 
+    action: WelcomeTasksActions.WelcomeTaskActions
+    ) {
     switch(action.type)  {
         case WelcomeTasksActions.ADD_TASK:
             //return new state, immutable, never touch existing state    
@@ -18,6 +22,11 @@ export function welcomeTaskReducer(state = initlaTasks, action: WelcomeTasksActi
                 ...state, 
                 //copy the tasks and add a new action
                 tasks: [...state.tasks, action.payload]
+            }
+        case WelcomeTasksActions.ADD_TASKS:
+            return {
+                ...state,
+                tasks: [...state.tasks, ...action.payload] // if we do this ==> [...state.tasks, action.payload], will be nested array
             }
         default:
             return state;

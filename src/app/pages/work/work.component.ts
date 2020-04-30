@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkService } from 'src/app/service/work.service';
 
 @Component({
   selector: 'app-work',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkComponent implements OnInit {
 
-  constructor() { }
+  constructor(private workService: WorkService) { }
 
   ngOnInit() {
+  }
+
+  addMultipleTasks() {
+    const tasksAtWork = ['attend meeting', 'write code'];
+    this.workService.addTasks(tasksAtWork);
   }
 
 }

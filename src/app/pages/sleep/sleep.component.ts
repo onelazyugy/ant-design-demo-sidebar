@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as WelcomeTasksActions from '../welcome/store/welcome.action';
+import { SleepService } from 'src/app/service/sleep.service';
 
 @Component({
   selector: 'app-sleep',
@@ -10,13 +11,13 @@ import * as WelcomeTasksActions from '../welcome/store/welcome.action';
 })
 export class SleepComponent implements OnInit {
 
-  constructor(private store: Store<{ welcomeTask: { tasks: string[] } }>) { }
+  constructor(private store: Store<{ welcomeTask: { tasks: string[] } }>, private sleepService: SleepService) { }
 
   ngOnInit() {
   }
 
   addSleepTask() {
-    this.store.dispatch(new WelcomeTasksActions.AddTask('sleep'));
+    this.sleepService.addSleepTask('sleep');
   }
 
 }
