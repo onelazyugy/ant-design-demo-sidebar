@@ -17,6 +17,9 @@ import { EatModule } from './pages/eat/eat.module';
 import { SleepModule } from './pages/sleep/sleep.module';
 import { ChoresModule } from './pages/chores/chores.module';
 
+import { StoreModule } from '@ngrx/store';
+import { welcomeTaskReducer } from './pages/welcome/store/welcome.reducer';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -30,6 +33,9 @@ registerLocaleData(en);
     NgZorroAntdModule,
     HttpClientModule,
     BrowserAnimationsModule,
+
+    //wire up the store with all of the app reducers
+    StoreModule.forRoot({welcomeTask: welcomeTaskReducer}),
 
     LoginModule,
     WelcomeModule,
