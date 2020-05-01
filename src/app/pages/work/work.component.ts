@@ -21,5 +21,4 @@ export class WorkComponent implements OnInit {
     const tasksAtWork = ['attend meeting', 'write code'];
     this.workService.addTasks(tasksAtWork);
   }
-
 }

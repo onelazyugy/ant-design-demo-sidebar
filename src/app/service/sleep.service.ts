@@ -15,4 +15,8 @@ export class SleepService {
     //fake for now...
     this.store.dispatch(new WelcomeTasksActions.AddTask(task));
   }
+
+  deleteSleepTask(task: string) {
+    this.store.dispatch(new WelcomeTasksActions.DeleteTask(task));
+  }
 }

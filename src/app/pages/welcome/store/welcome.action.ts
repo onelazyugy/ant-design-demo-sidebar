@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 export const ADD_TASK = 'ADD_TASK';
 export const ADD_TASKS = 'ADD_TASKS';
+export const DELETE_TASK = 'DELETE_TASK'
 
 export class AddTask implements Action {
     // readonly is typescript feature...this variable never change outside
@@ -14,5 +15,10 @@ export class AddTasks implements Action {
     constructor(public payload: string[]){}
 }
 
+export class DeleteTask implements Action {
+    readonly type = DELETE_TASK;
+    constructor(public payload: string){};
+}
+
 //typescript feature, the | is a typescript feature that says type WelcomeActions is either AddTask or AddTasks
-export type WelcomeTaskActions = AddTask | AddTasks;
+export type WelcomeTaskActions = AddTask | AddTasks | DeleteTask;

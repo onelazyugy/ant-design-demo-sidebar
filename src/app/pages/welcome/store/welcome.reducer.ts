@@ -1,5 +1,6 @@
 //alias import
 import * as WelcomeTasksActions from './welcome.action';
+import _ from 'lodash';
 
 const initlaTasks = {
     tasks: [
@@ -27,6 +28,20 @@ export function welcomeTaskReducer(
             return {
                 ...state,
                 tasks: [...state.tasks, ...action.payload] // if we do this ==> [...state.tasks, action.payload], will be nested array
+            }
+        case WelcomeTasksActions.DELETE_TASK:
+            const copiedCurrentState = { ...state };
+            const taskToBeRemoved = action.payload;
+            const newTasksAfterDeletedATask = _.filter(copiedCurrentState.tasks, function(task) {
+                if(task !== taskToBeRemoved) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            return {
+                ...state, //copy of old state
+                tasks: [...newTasksAfterDeletedATask]
             }
         default:
             return state;
