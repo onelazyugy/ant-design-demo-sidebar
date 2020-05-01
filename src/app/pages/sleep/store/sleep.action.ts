@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-export const ADD_SLEEP_TASK = 'ADD_SLEEP_TASK';
+export const ADD_SLEEP_TASK = '[Sleep] Add Sleep Task';
 
 export class AddSleepTask implements Action{
     readonly type = ADD_SLEEP_TASK;

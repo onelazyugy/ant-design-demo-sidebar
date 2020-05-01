@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-export const ADD_TASK = 'ADD_TASK';
-export const ADD_TASKS = 'ADD_TASKS';
-export const DELETE_TASK = 'DELETE_TASK'
+export const ADD_TASK = '[Welcome] Add Task';
+export const ADD_TASKS = '[Welcome] Add Tasks';
+export const DELETE_TASK = '[Welcome] Delete Task'
 
 export class AddTask implements Action {
     // readonly is typescript feature...this variable never change outside
