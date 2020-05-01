@@ -3,6 +3,7 @@ import { WorkService } from 'src/app/service/work.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import * as fromApp from '../../store/app.reducer'; //just convention from ngrx doc
 @Component({
   selector: 'app-work',
   templateUrl: './work.component.html',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class WorkComponent implements OnInit {
   tasks: Observable<{ tasks: string[] }>;
   
-  constructor(private workService: WorkService, private store: Store<{ welcomeTask: { tasks: string[] } }>) { }
+  constructor(private workService: WorkService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     this.tasks = this.store.select('welcomeTask');

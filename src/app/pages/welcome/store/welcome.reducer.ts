@@ -2,17 +2,24 @@
 import * as WelcomeTasksActions from './welcome.action';
 import _ from 'lodash';
 
-const initlaTasks = {
+//define the type for our tasks
+export interface State {
+    tasks: string[];
+    deletedTasks: string[];
+}
+
+const initlaTasks: State = {
     tasks: [
         'brush teeth',
         'eat breakfast',
         'work',
         'eat lunch'
-    ]
+    ],
+    deletedTasks: []
 };
 
 export function welcomeTaskReducer(
-    state = initlaTasks, 
+    state: State = initlaTasks, 
     action: WelcomeTasksActions.WelcomeTaskActions
     ) {
     switch(action.type)  {
@@ -41,7 +48,8 @@ export function welcomeTaskReducer(
             });
             return {
                 ...state, //copy of old state
-                tasks: [...newTasksAfterDeletedATask]
+                tasks: [...newTasksAfterDeletedATask],
+                deletedTasks: [taskToBeRemoved]
             }
         default:
             return state;

@@ -17,3 +17,11 @@ welcome page<br />
 <div *ngFor="let task of (tasks | async).tasks; let i = index">
     {{task}}
 </div>
+
+<hr />
+<h1>Delelted Tasks</h1>
+<div>
+    <div *ngFor="let deletedTask of (tasks | async).deletedTasks; let i = index">
+        {{deletedTask}}
+    </div>
+</div>

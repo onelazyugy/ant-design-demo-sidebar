@@ -18,7 +18,7 @@ import { SleepModule } from './pages/sleep/sleep.module';
 import { ChoresModule } from './pages/chores/chores.module';
 
 import { StoreModule } from '@ngrx/store';
-import { welcomeTaskReducer } from './pages/welcome/store/welcome.reducer';
+import * as fromApp from './store/app.reducer';
 
 registerLocaleData(en);
 
@@ -35,7 +35,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
 
     //wire up the store with all of the app reducers
-    StoreModule.forRoot({welcomeTask: welcomeTaskReducer}),
+    StoreModule.forRoot(fromApp.appReducer),
 
     LoginModule,
     WelcomeModule,

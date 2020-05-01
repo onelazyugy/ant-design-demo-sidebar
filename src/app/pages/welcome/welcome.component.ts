@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import * as fromApp from '../../store/app.reducer'; //just convention from ngrx doc
 
 @Component({
   selector: 'app-welcome',
@@ -11,7 +12,7 @@ export class WelcomeComponent implements OnInit {
   // the generic in the Observable matches the Store generic from the constructor
   tasks: Observable<{ tasks: string[] }>;
   //welcomeTask is exact key from app module
-  constructor(private store: Store<{ welcomeTask: { tasks: string[] } }>) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     //select a slice of your state

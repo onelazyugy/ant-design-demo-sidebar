@@ -11,6 +11,5 @@ export class WorkService {
 
   addTasks(tasks: string[]) {
     this.store.dispatch(new WelcomeTasksActions.AddTasks(tasks));
-    // return tasks;
   }
 }
