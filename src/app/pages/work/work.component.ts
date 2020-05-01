@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as fromApp from '../../store/app.reducer'; //just convention from ngrx doc
+
 @Component({
   selector: 'app-work',
   templateUrl: './work.component.html',
