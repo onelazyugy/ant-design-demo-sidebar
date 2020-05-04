@@ -38,4 +38,4 @@ export class WelcomeMessageFailed implements Action {
 //end for effect
 
 //typescript feature, the | is a typescript feature that says type WelcomeActions is either AddTask or AddTasks
-export type WelcomeTaskActions = AddTask | AddTasks | DeleteTask;
+export type WelcomeTaskActions = AddTask | AddTasks | DeleteTask | AddWelcomeMessage | WelcomeMessageFailed;

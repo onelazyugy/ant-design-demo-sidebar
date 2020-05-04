@@ -20,6 +20,7 @@ export class WelcomeComponent implements OnInit {
     //select a slice of your state
     //you can subscribe here but we use async pipe in the template instead.
     this.tasks = this.store.select('welcomeTask');
+    console.log('this.task:', this.tasks);
   }
 
   testEffects() {

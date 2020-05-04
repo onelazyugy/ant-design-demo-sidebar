@@ -6,6 +6,8 @@ import _ from 'lodash';
 export interface State {
     tasks: string[];
     deletedTasks: string[];
+    welcomeMessageFailed: string;
+    welcomeMessageSuccess: string;
 }
 
 const initlaTasks: State = {
@@ -15,7 +17,9 @@ const initlaTasks: State = {
         'work',
         'eat lunch'
     ],
-    deletedTasks: []
+    deletedTasks: [],
+    welcomeMessageFailed: '',
+    welcomeMessageSuccess: ''
 };
 
 export function welcomeTaskReducer(
@@ -50,6 +54,20 @@ export function welcomeTaskReducer(
                 ...state, //copy of old state
                 tasks: [...newTasksAfterDeletedATask],
                 deletedTasks: [taskToBeRemoved]
+            }
+        case WelcomeTasksActions.ADD_WELCOME_MESSAGE:
+            return {
+                ...state,
+                task: [],
+                deletedTasks: [],
+                welcomeMessageSuccess: action.payload
+            }
+        case WelcomeTasksActions.WELCOME_MESSAGE_FAILED:
+            return {
+                ...state,
+                task: [],
+                deletedTasks: [],
+                welcomeMessageFailed: action.payload
             }
         default:
             return state;
