@@ -18,7 +18,9 @@ import { SleepModule } from './pages/sleep/sleep.module';
 import { ChoresModule } from './pages/chores/chores.module';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import * as fromApp from './store/app.reducer';
+import { WelcomeEffects } from './pages/welcome/store/welcome.effects';
 
 registerLocaleData(en);
 
@@ -36,6 +38,8 @@ registerLocaleData(en);
 
     //wire up the store with all of the app reducers
     StoreModule.forRoot(fromApp.appReducer),
+    //wire up the effects
+    EffectsModule.forRoot([WelcomeEffects]),
 
     LoginModule,
     WelcomeModule,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromApp from '../../store/app.reducer'; //just convention from ngrx doc
+import * as WelcomeActions from './store/welcome.action';
+
 
 @Component({
   selector: 'app-welcome',
@@ -18,6 +20,12 @@ export class WelcomeComponent implements OnInit {
     //select a slice of your state
     //you can subscribe here but we use async pipe in the template instead.
     this.tasks = this.store.select('welcomeTask');
+  }
+
+  testEffects() {
+    this.store.dispatch(
+      new WelcomeActions.AddWelcomeMessage('hi welcome message')
+    );
   }
 
 }
