@@ -5,6 +5,7 @@ export const DELETE_TASK = '[Welcome] Delete Task'
 
 //for effects
 export const ADD_WELCOME_MESSAGE = '[Welcome] Add Welcome Message';
+export const WELCOME_MESSAGE_FAILED = '[Welcome] Welcome Message Failed';
 //end for effect
 
 export class AddTask implements Action {
@@ -27,6 +28,11 @@ export class DeleteTask implements Action {
 //this is for effects
 export class AddWelcomeMessage implements Action {
     readonly type = ADD_WELCOME_MESSAGE;
+    constructor(public payload: string){}
+}
+
+export class WelcomeMessageFailed implements Action {
+    readonly type = WELCOME_MESSAGE_FAILED;
     constructor(public payload: string){}
 }
 //end for effect

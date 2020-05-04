@@ -24,7 +24,7 @@ export class WelcomeComponent implements OnInit {
 
   testEffects() {
     this.store.dispatch(
-      new WelcomeActions.AddWelcomeMessage('hi welcome message')
+      new WelcomeActions.AddWelcomeMessage('hi welcome ')
     );
   }
 
