@@ -15,41 +15,23 @@ export class WelcomeEffects {
     @Effect() // this is for ngrx effect to pick up this effect handler
     welcomeMessage = this.actions$.pipe(
         // only trigger this effects if action is of type ADD_WELCOME_MESSAGE
-        ofType(WelcomeTaskActions.ADD_WELCOME_MESSAGE), // can add multiple action here inside the ofType
-        switchMap((addWelcomeMessageData: WelcomeTaskActions.AddWelcomeMessage) => {
+        ofType(WelcomeTaskActions.ADD_WELCOME_MESSAGE_START), // can add multiple action here inside the ofType
+        switchMap((addWelcomeMessageData: WelcomeTaskActions.AddWelcomeMessageStart) => {
             //make http call here and return an Observable
             const message = addWelcomeMessageData.payload;
-            // //fake making http call
-            // let messageFromServer;
-            // setTimeout(() => {
-            //     messageFromServer = `message successfully added: ${message}`
-            // }, 2000);
-            // this.http.get('https://reqres.in/api/users?page=2')
             return this.http.get<any>('https://reqres.in/api/users/2')
-                .pipe(
-                    map(response => {
-                        console.log('response: ', response);
-                        const fullMessage = message + response.data.first_name + ' ' + response.data.last_name;
-                        // return of(new WelcomeTaskActions.AddWelcomeMessage(fullMessage));
-                        return new WelcomeTaskActions.DisplayWelcomeMessage(fullMessage);
-                    }),
-                    catchError(error => {
-                        console.log('fetchBookDetials: error and rethrowing it...', error);
-                        //return an observable eventhough the http call got an error
-                        //TODO: need an Error action   
-                        return of(); 
-                    })
-                );
-            // return new Observable<string>().pipe(
-            //     map(responseData => {
-            //         console.log('responseData: ', responseData);
-            //         return of(new WelcomeTaskActions.AddWelcomeMessage('i am a message from server'));
-            //     }),
-            //     catchError((error) => {
-            //         console.error(error);
-            //         return of();
-            //     }), 
-            // );
+            .pipe(
+                map(response => {
+                    console.log('response: ', response);
+                    const fullMessage = message + response.data.first_name + ' ' + response.data.last_name;
+                    return new WelcomeTaskActions.DisplayWelcomeMessage(fullMessage);
+                }),
+                catchError(error => {
+                    //return an observable eventhough the http call got an error
+                    //TODO: need an Error action   
+                    return of(new WelcomeTaskActions.WelcomeMessageFailed(`error displaying welcome message: ${error.message}`)); 
+                })
+            );
         }),
 
     );

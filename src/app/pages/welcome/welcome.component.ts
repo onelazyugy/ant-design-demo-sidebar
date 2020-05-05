@@ -27,10 +27,13 @@ export class WelcomeComponent implements OnInit {
 
     this.store.select('welcomeTask').subscribe(welcomeState => {
       console.log('welcomeState:', welcomeState);
+
       this.welcomeMessage = welcomeState.welcomeMessageSuccess;
       console.log('this.welcomeMessage:', this.welcomeMessage);
+      
       this.errorWelcomeMessage = welcomeState.welcomeMessageFailed;
-      console.log('this.errorWelcomeMessage:', this.welcomeMessage);
+      console.log('this.errorWelcomeMessage:', this.errorWelcomeMessage);
+      
       this.welcomeMessageDisplay = welcomeState.displayWelcomeMessage;
       console.log('this.welcomeMessageDisplay:', this.welcomeMessageDisplay);
     })
@@ -38,8 +41,7 @@ export class WelcomeComponent implements OnInit {
 
   testEffects() {
     this.store.dispatch(
-      new WelcomeActions.AddWelcomeMessage('hi welcome ')
+      new WelcomeActions.AddWelcomeMessageStart('hi welcome ')
     );
   }
-
 }

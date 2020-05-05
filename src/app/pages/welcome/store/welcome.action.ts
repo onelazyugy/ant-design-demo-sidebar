@@ -4,7 +4,7 @@ export const ADD_TASKS = '[Welcome] Add Tasks';
 export const DELETE_TASK = '[Welcome] Delete Task'
 
 //for effects
-export const ADD_WELCOME_MESSAGE = '[Welcome] Add Welcome Message';
+export const ADD_WELCOME_MESSAGE_START = '[Welcome] Add Welcome Message Start';
 export const DISPLAY_WELCOME_MESSAGE = '[Welcome] Display Welcome Message';
 export const WELCOME_MESSAGE_FAILED = '[Welcome] Welcome Message Failed';
 //end for effect
@@ -27,8 +27,8 @@ export class DeleteTask implements Action {
 }
 
 //this is for effects
-export class AddWelcomeMessage implements Action {
-    readonly type = ADD_WELCOME_MESSAGE;
+export class AddWelcomeMessageStart implements Action {
+    readonly type = ADD_WELCOME_MESSAGE_START;
     constructor(public payload: string){}
 }
 
@@ -44,4 +44,4 @@ export class WelcomeMessageFailed implements Action {
 //end for effect
 
 //typescript feature, the | is a typescript feature that says type WelcomeActions is either AddTask or AddTasks
-export type WelcomeTaskActions = AddTask | AddTasks | DeleteTask | AddWelcomeMessage | DisplayWelcomeMessage | WelcomeMessageFailed;
+export type WelcomeTaskActions = AddTask | AddTasks | DeleteTask | AddWelcomeMessageStart | DisplayWelcomeMessage | WelcomeMessageFailed;

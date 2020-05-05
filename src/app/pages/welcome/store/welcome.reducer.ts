@@ -57,7 +57,8 @@ export function welcomeTaskReducer(
                 tasks: [...newTasksAfterDeletedATask],
                 deletedTasks: [taskToBeRemoved]
             }
-        case WelcomeTasksActions.ADD_WELCOME_MESSAGE:
+        //for effects
+        case WelcomeTasksActions.ADD_WELCOME_MESSAGE_START:
             return {
                 ...state,
                 task: [],
@@ -78,6 +79,7 @@ export function welcomeTaskReducer(
                 deletedTasks: [],
                 welcomeMessageFailed: action.payload
             }
+        //end for effects
         default:
             return state;
     }
