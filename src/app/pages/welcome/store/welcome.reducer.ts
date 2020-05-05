@@ -8,6 +8,7 @@ export interface State {
     deletedTasks: string[];
     welcomeMessageFailed: string;
     welcomeMessageSuccess: string;
+    displayWelcomeMessage: string;
 }
 
 const initlaTasks: State = {
@@ -19,7 +20,8 @@ const initlaTasks: State = {
     ],
     deletedTasks: [],
     welcomeMessageFailed: '',
-    welcomeMessageSuccess: ''
+    welcomeMessageSuccess: '',
+    displayWelcomeMessage: ''
 };
 
 export function welcomeTaskReducer(
@@ -61,6 +63,13 @@ export function welcomeTaskReducer(
                 task: [],
                 deletedTasks: [],
                 welcomeMessageSuccess: action.payload
+            }
+        case WelcomeTasksActions.DISPLAY_WELCOME_MESSAGE:
+            return {
+                ...state,
+                task: [],
+                deletedTasks: [],
+                displayWelcomeMessage: action.payload
             }
         case WelcomeTasksActions.WELCOME_MESSAGE_FAILED:
             return {

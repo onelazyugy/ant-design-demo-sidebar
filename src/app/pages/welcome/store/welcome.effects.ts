@@ -30,7 +30,8 @@ export class WelcomeEffects {
                     map(response => {
                         console.log('response: ', response);
                         const fullMessage = message + response.data.first_name + ' ' + response.data.last_name;
-                        return of(new WelcomeTaskActions.AddWelcomeMessage(fullMessage));
+                        // return of(new WelcomeTaskActions.AddWelcomeMessage(fullMessage));
+                        return new WelcomeTaskActions.DisplayWelcomeMessage(fullMessage);
                     }),
                     catchError(error => {
                         console.log('fetchBookDetials: error and rethrowing it...', error);

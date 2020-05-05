@@ -11,6 +11,9 @@ import * as WelcomeActions from './store/welcome.action';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  welcomeMessage: string;
+  errorWelcomeMessage: string;
+  welcomeMessageDisplay: string;
   // the generic in the Observable matches the Store generic from the constructor
   tasks: Observable<{ tasks: string[] }>;
   //welcomeTask is exact key from app module
@@ -21,6 +24,16 @@ export class WelcomeComponent implements OnInit {
     //you can subscribe here but we use async pipe in the template instead.
     this.tasks = this.store.select('welcomeTask');
     console.log('this.task:', this.tasks);
+
+    this.store.select('welcomeTask').subscribe(welcomeState => {
+      console.log('welcomeState:', welcomeState);
+      this.welcomeMessage = welcomeState.welcomeMessageSuccess;
+      console.log('this.welcomeMessage:', this.welcomeMessage);
+      this.errorWelcomeMessage = welcomeState.welcomeMessageFailed;
+      console.log('this.errorWelcomeMessage:', this.welcomeMessage);
+      this.welcomeMessageDisplay = welcomeState.displayWelcomeMessage;
+      console.log('this.welcomeMessageDisplay:', this.welcomeMessageDisplay);
+    })
   }
 
   testEffects() {
