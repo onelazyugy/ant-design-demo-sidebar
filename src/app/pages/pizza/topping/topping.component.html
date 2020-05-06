@@ -1,3 +1,8 @@
 <div *ngFor="let topping of input">
-    <u><li>{{topping}}</li></u>
+    <span>
+        <li>{{topping.name}}</li>
+    <span>
+    </span>
+        <img src="{{topping.image}}" style="height: 100px; width: 100px;">
+    </span>
 </div>
