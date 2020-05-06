@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
     exports: [
         NzButtonModule,
         NzInputModule,
-        NzStepsModule
+        NzStepsModule,
+        NzIconModule
     ]
 })
 export class AntDesignCommonModule {}

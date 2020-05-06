@@ -7,6 +7,7 @@ import { WorkComponent } from './pages/work/work.component';
 import { EatComponent } from './pages/eat/eat.component';
 import { SleepComponent } from './pages/sleep/sleep.component';
 import { ChoresComponent } from './pages/chores/chores.component';
+import { PizzaComponent } from './pages/pizza/pizza.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'chores',
     component: ChoresComponent
+  },
+  {
+    path: 'pizza',
+    component: PizzaComponent
   }
 ];
 

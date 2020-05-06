@@ -21,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromApp from './store/app.reducer';
 import { WelcomeEffects } from './pages/welcome/store/welcome.effects';
+import { PizzaModule } from './pages/pizza/pizza.module';
 
 registerLocaleData(en);
 
@@ -47,7 +48,8 @@ registerLocaleData(en);
     WorkModule,
     EatModule,
     SleepModule,
-    ChoresModule
+    ChoresModule,
+    PizzaModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
