@@ -13,4 +13,7 @@ export class ToppingComponent implements OnInit {
     console.log('input:', this.input);
   }
 
+  toppingClicked(selectedTopping: any) {
+    console.log(selectedTopping);
+  }
 }
