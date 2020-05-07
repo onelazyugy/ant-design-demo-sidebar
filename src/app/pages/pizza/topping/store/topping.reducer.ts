@@ -8,6 +8,11 @@ export interface State {
     cheeses: Ingredient[];
     meats: Ingredient[];
     veggies: Ingredient[];
+
+    //selected
+    selectedCheeses: Ingredient[];
+    selectedMeats: Ingredient[];
+    selectedVeggies: Ingredient[];
 }
 
 const initlaTasks: State = {
@@ -27,7 +32,12 @@ const initlaTasks: State = {
         {'type': 'veggie', 'id': 4, 'name': 'Mushrooms', 'image': 'assets/veggie/mushrooms.jpg', 'isSelected': false}, {'type': 'veggie', 'id': 5, 'name': 'Pineapple', 'image': 'assets/veggie/pine.jpg', 'isSelected': false}, 
         {'type': 'veggie', 'id': 6, 'name': 'Black Olives', 'image': 'assets/veggie/olive.jpg', 'isSelected': false}, {'type': 'veggie', 'id': 7, 'name': 'Fresh Spinach', 'image': 'assets/veggie/spin.jpg', 'isSelected': false}, 
         {'type': 'veggie', 'id': 8, 'name': 'Banana Peppers', 'image': 'assets/veggie/ban-pep.png', 'isSelected': false}
-    ]
+    ],
+
+    //selected
+    selectedCheeses:[],
+    selectedMeats:[],
+    selectedVeggies:[]
 };
 
 export function toppingReducer( state: State = initlaTasks, action: ToppingActions.ToppingTaskActions) {
@@ -44,7 +54,11 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     ...state, 
                     cheeses: [...newCopiedCheeses],
                     meats: [...state.meats],
-                    veggies: [...state.veggies]
+                    veggies: [...state.veggies],
+                    //selected 
+                    selectedCheeses: [...state.selectedCheeses],
+                    selectedMeats: [...state.selectedMeats],
+                    selectedVeggies: [...state.selectedVeggies]
                 }
             } else if(selectedIngredient.type === 'meat') {
                 let copiedCurrentMeats = [...state.meats];
@@ -56,7 +70,11 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     ...state, 
                     cheeses: [...state.cheeses],
                     meats: [...newCopiedMeats],
-                    veggies: [...state.veggies]
+                    veggies: [...state.veggies],
+                    //selected 
+                    selectedCheeses: [...state.selectedCheeses],
+                    selectedMeats: [...state.selectedMeats],
+                    selectedVeggies: [...state.selectedVeggies]
                 }
             } else {
                 let copiedCurrentVeggies = [...state.veggies];
@@ -68,11 +86,49 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     ...state, 
                     cheeses: [...state.cheeses],
                     meats: [...state.meats],
-                    veggies: [...newCopiedVeggies]
+                    veggies: [...newCopiedVeggies],
+                    //selected 
+                    selectedCheeses: [...state.selectedCheeses],
+                    selectedMeats: [...state.selectedMeats],
+                    selectedVeggies: [...state.selectedVeggies]
                 }
             }
-            
-             
+        // case ToppingActions.TOPPING_DESELECTED:
+        //     let deSelectedIngredient: Ingredient = action.payload;
+        //     if(selectedIngredient.type === 'cheese') {
+        //         return {
+        //             ...state,
+        //             cheeses: [...state.cheeses],
+        //             meats: [...state.meats],
+        //             veggies: [...state.veggies],
+        //             //selected 
+        //             selectedCheeses: [...state.selectedCheeses, deSelectedIngredient],
+        //             selectedMeats: [...state.selectedMeats],
+        //             selectedVeggies: [...state.selectedVeggies]
+        //         }
+        //     } else if(selectedIngredient.type === 'meat') {
+        //         return {
+        //             ...state,
+        //             cheeses: [...state.cheeses],
+        //             meats: [...state.meats],
+        //             veggies: [...state.veggies],
+        //             //selected 
+        //             selectedCheeses: [...state.selectedCheeses],
+        //             selectedMeats: [...state.selectedMeats, deSelectedIngredient],
+        //             selectedVeggies: [...state.selectedVeggies]
+        //         }
+        //     } else {
+        //         return {
+        //             ...state,
+        //             cheeses: [...state.cheeses],
+        //             meats: [...state.meats],
+        //             veggies: [...state.veggies],
+        //             //selected 
+        //             selectedCheeses: [...state.selectedCheeses],
+        //             selectedMeats: [...state.selectedMeats],
+        //             selectedVeggies: [...state.selectedVeggies, deSelectedIngredient]
+        //         }
+        //     }
         default:
             return state;
     }

@@ -15,6 +15,7 @@ export class SelectAToppingTask implements Action {
 //     readonly type = TOPPING_DESELECTED;
 //     constructor(public payload: Ingredient){}
 // }
+
 // export class AddTasks implements Action {
 //     readonly type = ADD_TASKS;
 //     constructor(public payload: string[]){}
@@ -27,4 +28,4 @@ export class SelectAToppingTask implements Action {
 
 
 //typescript feature, the | is a typescript feature that says type WelcomeActions is either AddTask or AddTasks
-export type ToppingTaskActions = SelectAToppingTask;
+export type ToppingTaskActions = SelectAToppingTask /*| DeselectAToppingTask*/;

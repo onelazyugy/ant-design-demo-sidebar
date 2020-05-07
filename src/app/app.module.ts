@@ -19,9 +19,11 @@ import { ChoresModule } from './pages/chores/chores.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromApp from './store/app.reducer';
 import { WelcomeEffects } from './pages/welcome/store/welcome.effects';
 import { PizzaModule } from './pages/pizza/pizza.module';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(en);
 
@@ -41,7 +43,8 @@ registerLocaleData(en);
     StoreModule.forRoot(fromApp.appReducer),
     //wire up the effects
     EffectsModule.forRoot([WelcomeEffects]),
-
+    //ngrxdevtools
+    StoreDevtoolsModule.instrument({logOnly: environment.production}),
     LoginModule,
     WelcomeModule,
     RxjsModule,
