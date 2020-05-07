@@ -30,7 +30,7 @@ const initlaTasks: State = {
     ]
 };
 
-export function toppingReducer( state: State = initlaTasks, action: ToppingActions.ToppingSelected) {
+export function toppingReducer( state: State = initlaTasks, action: ToppingActions.ToppingTaskActions) {
     switch(action.type)  {
         case ToppingActions.TOPPING_SELECTED:
             let selectedIngredient: Ingredient = action.payload;
@@ -72,6 +72,7 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                 }
             }
             
+             
         default:
             return state;
     }
