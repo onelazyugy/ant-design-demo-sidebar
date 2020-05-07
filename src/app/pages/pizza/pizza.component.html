@@ -1,4 +1,4 @@
-<p>MAKE YOUR OWN PIZZA</p>
+<h1 class="center-text">MAKE YOUR OWN PIZZA</h1>
 <nz-steps [nzCurrent]="current">
     <nz-step nzTitle="BASE"></nz-step>
     <nz-step nzTitle="CHEESE"></nz-step>
@@ -8,7 +8,7 @@
 </nz-steps>
 
 <div class="steps-content">
-    <div *ngIf="current === 0">
+    <div *ngIf="current === 0" class="center-text">
         <img src="assets/pizza/1pizza-no-decor.png" style="height: 414px; width: 706px;">
     </div>
     <div *ngIf="current === 1">
@@ -21,7 +21,20 @@
         <app-topping [input]="veggies" [index]=3></app-topping>
     </div>
     <div *ngIf="current === 4">
-        <img src="assets/pizza/4pizza-final.png">
+        <!-- <img src="assets/pizza/4pizza-final.png"> -->
+        <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+            <div nz-col class="gutter-row" [nzSpan]="18">
+                <div class="inner-box">
+                    <img src="assets/pizza/4pizza-final.png">
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="6">
+                <div class="inner-box">
+                    <p>Selected Toppings</p>
+                    <button nz-button nzType="primary">MARK AS READY FOR DELIVERY</button>
+                </div>
+            </div>
+        </div>
     </div>
     
 </div>
