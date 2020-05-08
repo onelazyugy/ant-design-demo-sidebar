@@ -4,6 +4,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
     declarations: [],
@@ -12,7 +13,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
         NzInputModule,
         NzStepsModule,
         NzIconModule,
-        NzGridModule
+        NzGridModule,
+        NzDividerModule
     ]
 })
 export class AntDesignCommonModule {}

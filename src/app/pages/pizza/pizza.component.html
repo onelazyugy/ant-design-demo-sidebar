@@ -24,14 +24,26 @@
         <!-- <img src="assets/pizza/4pizza-final.png"> -->
         <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
             <div nz-col class="gutter-row" [nzSpan]="18">
-                <div class="inner-box">
-                    <img src="assets/pizza/4pizza-final.png">
+                <div class="inner-box" style="margin-right: 10px;">
+                    <img src="assets/pizza/4pizza-final.png" width="100%">
                 </div>
             </div>
             <div nz-col class="gutter-row" [nzSpan]="6">
                 <div class="inner-box">
-                    <p>Selected Toppings</p>
-                    <button nz-button nzType="primary">MARK AS READY FOR CHECKOUT</button>
+                    <h3>Selected Toppings</h3>
+                    <nz-divider nzText="Cheeses" nzOrientation="left"></nz-divider>
+                    <div *ngFor="let topping of selectedCheeeses">
+                        <li>{{topping.name}}</li>
+                    </div>
+                    <nz-divider nzText="Meats" nzOrientation="left"></nz-divider>
+                    <div *ngFor="let topping of selectedMeats">
+                        <li>{{topping.name}}</li>
+                    </div>
+                    <nz-divider nzText="Meats" nzOrientation="left"></nz-divider>
+                    <div *ngFor="let topping of selectedVeggies">
+                        <li>{{topping.name}}</li>
+                    </div>
+                    <button nz-button nzType="primary">PROCEED TO CHECKOUT</button>
                 </div>
             </div>
         </div>

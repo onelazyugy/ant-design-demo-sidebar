@@ -50,13 +50,14 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     return element.id !== selectedIngredient.id;
                 });
                 const newCopiedCheeses = _.sortBy([...copiedCurrentCheeses, selectedIngredient], ['id']);
+                const selectedCheeses = _.filter(newCopiedCheeses, {'isSelected': true})
                 return  {
                     ...state, 
                     cheeses: [...newCopiedCheeses],
                     meats: [...state.meats],
                     veggies: [...state.veggies],
                     //selected 
-                    selectedCheeses: [...state.selectedCheeses],
+                    selectedCheeses: [...selectedCheeses],
                     selectedMeats: [...state.selectedMeats],
                     selectedVeggies: [...state.selectedVeggies]
                 }
@@ -66,6 +67,7 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     return element.id !== selectedIngredient.id;
                 });
                 const newCopiedMeats = _.sortBy([...copiedCurrentMeats, selectedIngredient], ['id']);
+                const selectedMeats = _.filter(newCopiedMeats, {'isSelected': true})
                 return  {
                     ...state, 
                     cheeses: [...state.cheeses],
@@ -73,7 +75,7 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     veggies: [...state.veggies],
                     //selected 
                     selectedCheeses: [...state.selectedCheeses],
-                    selectedMeats: [...state.selectedMeats],
+                    selectedMeats: [...selectedMeats],
                     selectedVeggies: [...state.selectedVeggies]
                 }
             } else {
@@ -82,6 +84,7 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     return element.id !== selectedIngredient.id;
                 });
                 const newCopiedVeggies = _.sortBy([...copiedCurrentVeggies, selectedIngredient], ['id']);
+                const selectedVeggies = _.filter(newCopiedVeggies, {'isSelected': true})
                 return  {
                     ...state, 
                     cheeses: [...state.cheeses],
@@ -90,7 +93,7 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     //selected 
                     selectedCheeses: [...state.selectedCheeses],
                     selectedMeats: [...state.selectedMeats],
-                    selectedVeggies: [...state.selectedVeggies]
+                    selectedVeggies: [...selectedVeggies]
                 }
             }
         // case ToppingActions.TOPPING_DESELECTED:

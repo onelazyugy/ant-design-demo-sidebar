@@ -34,20 +34,8 @@ export class ToppingComponent implements OnInit, OnDestroy {
 
   toppingClicked(selectedTopping: Ingredient) {
     let copiedSelectedTopping = {...selectedTopping};
-    // copiedSelectedTopping.isSelected = !copiedSelectedTopping.isSelected ? true : false;
-    // this.store.dispatch(new ToppingAction.SelectAToppingTask(copiedSelectedTopping));
-
-    //testing
-    if(!copiedSelectedTopping.isSelected) {
-      copiedSelectedTopping.isSelected = true;
-      // this.store.dispatch(new ToppingAction.SelectAToppingTask(copiedSelectedTopping));
-      // this.store.dispatch(new ToppingAction.DeselectAToppingTask(copiedSelectedTopping));
-    } else {
-      copiedSelectedTopping.isSelected = false;
-      // this.store.dispatch(new ToppingAction.DeselectAToppingTask(copiedSelectedTopping));
-    }
+    copiedSelectedTopping.isSelected = !copiedSelectedTopping.isSelected ? true : false;
     this.store.dispatch(new ToppingAction.SelectAToppingTask(copiedSelectedTopping));
-    // this.store.dispatch(new ToppingAction.DeselectAToppingTask(copiedSelectedTopping));
   }
 
   ngOnDestroy(): void {
