@@ -96,42 +96,6 @@ export function toppingReducer( state: State = initlaTasks, action: ToppingActio
                     selectedVeggies: [...selectedVeggies]
                 }
             }
-        // case ToppingActions.TOPPING_DESELECTED:
-        //     let deSelectedIngredient: Ingredient = action.payload;
-        //     if(selectedIngredient.type === 'cheese') {
-        //         return {
-        //             ...state,
-        //             cheeses: [...state.cheeses],
-        //             meats: [...state.meats],
-        //             veggies: [...state.veggies],
-        //             //selected 
-        //             selectedCheeses: [...state.selectedCheeses, deSelectedIngredient],
-        //             selectedMeats: [...state.selectedMeats],
-        //             selectedVeggies: [...state.selectedVeggies]
-        //         }
-        //     } else if(selectedIngredient.type === 'meat') {
-        //         return {
-        //             ...state,
-        //             cheeses: [...state.cheeses],
-        //             meats: [...state.meats],
-        //             veggies: [...state.veggies],
-        //             //selected 
-        //             selectedCheeses: [...state.selectedCheeses],
-        //             selectedMeats: [...state.selectedMeats, deSelectedIngredient],
-        //             selectedVeggies: [...state.selectedVeggies]
-        //         }
-        //     } else {
-        //         return {
-        //             ...state,
-        //             cheeses: [...state.cheeses],
-        //             meats: [...state.meats],
-        //             veggies: [...state.veggies],
-        //             //selected 
-        //             selectedCheeses: [...state.selectedCheeses],
-        //             selectedMeats: [...state.selectedMeats],
-        //             selectedVeggies: [...state.selectedVeggies, deSelectedIngredient]
-        //         }
-        //     }
         default:
             return state;
     }

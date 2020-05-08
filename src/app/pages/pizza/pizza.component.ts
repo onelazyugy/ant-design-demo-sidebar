@@ -21,8 +21,6 @@ export class PizzaComponent implements OnInit, OnDestroy {
   selectedVeggies: Ingredient[];
 
   toppingSubscription: Subscription;
-
-  // price, pizze image
   
   constructor(private store: Store<fromApp.AppState>) { }
 
