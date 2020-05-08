@@ -8,6 +8,8 @@ import { EatComponent } from './pages/eat/eat.component';
 import { SleepComponent } from './pages/sleep/sleep.component';
 import { ChoresComponent } from './pages/chores/chores.component';
 import { PizzaComponent } from './pages/pizza/pizza.component';
+import { CheckoutComponent } from './pages/pizza/checkout/checkout.component';
+import { CreateComponent } from './pages/pizza/create/create.component';
 
 const routes: Routes = [
   {
@@ -40,7 +42,11 @@ const routes: Routes = [
   },
   {
     path: 'pizza',
-    component: PizzaComponent
+    component: PizzaComponent,
+    children: [
+      {path: '', component: CreateComponent}, // if user navigate to /pizza, it will render CreateComponent
+      {path: 'checkout', component: CheckoutComponent},
+    ]
   }
 ];
 

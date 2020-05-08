@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PizzaComponent } from './pizza.component';
-import { AntDesignCommonModule } from 'src/app/ant-design-common.module';
-import { ShareModule } from 'src/app/share/share.module';
-import { ToppingModule } from './topping/topping.module';
-import { FormsModule } from '@angular/forms';
+import { CheckoutModule } from './checkout/checkout.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { CreateModule } from './create/create.module';
 
 @NgModule({
   declarations: [PizzaComponent],
   imports: [
-    AntDesignCommonModule,
-    ShareModule,
-    CommonModule,
-    FormsModule,
-    ToppingModule
+    AppRoutingModule,
+    CheckoutModule,
+    CreateModule
   ]
 })
 export class PizzaModule { }
