@@ -9,7 +9,7 @@ export interface State {
 const initlaTasks: State = {
     pizza: {
         'id': 0,
-        'size': [{'isSelected': true, 'value': 'sm'}, {'isSelected': false, 'value': 'md'}, {'isSelected': false, 'value': 'lg'}],
+        'size': [{'id': 0, 'label': 'SMALL', 'isSelected': true, 'value': 'sm'}, {'id': 1, 'label': 'MEDIUM', 'isSelected': false, 'value': 'md'}, {'id': 2, 'label': 'LARGE', 'isSelected': false, 'value': 'lg'}],
         'price': 0.00,
         'typeOfImage': {
             'initialPizzaImage': 'assets/pizza/1pizza-no-decor.png',
@@ -26,15 +26,20 @@ export function pizzaReducer(state: State = initlaTasks, action: PizzaActions.Pi
                 pizza: {...state.pizza}
             }
         case PizzaActions.SELECT_A_PIZZA_SIZE:
-            const selectedSize = action.payload;
-            let currentPizzaCopied = state.pizza;
-            currentPizzaCopied = _.remove(currentPizzaCopied.size, (element: PizzaSize) => {
-                return element.value !== selectedSize;
-            })
-            // _.filter(currentPizzaCopied.size, {'value': selectedSize})
+            const selectedPizzaSize: PizzaSize = action.payload;
+            let clonedPizza = {...state.pizza};
+            const updatedPizzaSizeArray: PizzaSize[] = clonedPizza.size.map(arrayElement => {
+                if(arrayElement.id !== selectedPizzaSize.id) {
+                    arrayElement = {...arrayElement, isSelected: false}//fix issue with mutating state
+                } else {
+                    arrayElement = {...arrayElement, isSelected: true}
+                }
+                return arrayElement;
+            });
+            clonedPizza.size = updatedPizzaSizeArray;
             return {
                 ...state,
-                pizza: {...currentPizzaCopied}
+                pizza: {...clonedPizza}
             }
         default:
             return state;

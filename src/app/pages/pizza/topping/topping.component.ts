@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import * as ToppingAction from '../../pizza/topping/store/topping.action';
 import { Ingredient } from 'src/app/model/ingredient.model';
 import { Subscription } from 'rxjs';
-// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-topping',
@@ -17,8 +16,6 @@ export class ToppingComponent implements OnInit, OnDestroy {
 
   toppingSubscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) { }
-  
-  // toppings: Observable<{ toppings: Ingredient[] }>;
   
   ngOnInit() {
     this.toppingSubscription = this.store.select('toppingReducer').subscribe(toppings => {

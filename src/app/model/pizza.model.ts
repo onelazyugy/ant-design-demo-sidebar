@@ -6,6 +6,8 @@ export interface PizzaImage {
 export interface PizzaSize {
     isSelected: boolean;
     value: string;
+    label: string;
+    id: number;
 }
 
 export class Pizza {

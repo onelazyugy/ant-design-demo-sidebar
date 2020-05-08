@@ -8,13 +8,11 @@
 </nz-steps>
 
 <div class="steps-content">
-    <div *ngIf="current === 0" class="center-text">
-        <div nz-row>
+    <div *ngIf="current === 0" class="center-tesxt">
+        <div nz-row class="center-text select-pizza-size">
             <h3>Selected Pizza Size</h3>
-            <nz-radio-group [(ngModel)]="radioValue" (ngModelChange)="selected($event)">
-                <label nz-radio nzValue="sm">SMALL</label>
-                <label nz-radio nzValue="md">MEDIUM</label>
-                <label nz-radio nzValue="lg">LARGE</label>
+            <nz-radio-group [(ngModel)]="selectedPizzaSize" (ngModelChange)="onSelectSize($event)" *ngFor="let size of pizzaSizeArray">
+                <label nz-radio nzValue="{{size.value}}">{{size.label}}</label>
             </nz-radio-group>
         </div>
         <div nz-row>
@@ -40,6 +38,8 @@
             </div>
             <div nz-col class="gutter-row" [nzSpan]="6">
                 <div class="inner-box">
+                    <h3>Selected Size</h3>
+                    some selected size
                     <h3>Selected Toppings</h3>
                     <nz-divider nzText="Cheeses" nzOrientation="left"></nz-divider>
                     <div *ngFor="let topping of selectedCheeeses">

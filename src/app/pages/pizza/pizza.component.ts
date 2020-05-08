@@ -3,8 +3,9 @@ import { Ingredient } from 'src/app/model/ingredient.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import { Subscription } from 'rxjs';
-import { Pizza } from 'src/app/model/pizza.model';
+import { Pizza, PizzaSize } from 'src/app/model/pizza.model';
 import * as PizzaAction from './store/pizza.action';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-pizza',
@@ -13,9 +14,9 @@ import * as PizzaAction from './store/pizza.action';
 })
 export class PizzaComponent implements OnInit, OnDestroy {
   current = 0;
-  baseMessage = 'First-content';
   //data for pizza component
-  radioValue = '';
+  pizzaSizeArray: PizzaSize[] = [];
+  selectedPizzaSize = '';
   initialPizzaImage = '';
 
   //data for Topping component
@@ -42,14 +43,18 @@ export class PizzaComponent implements OnInit, OnDestroy {
     //load data for this pizza component
     this.pizzaSubscription = this.store.select('pizzaReducer').subscribe(data => {
       const pizza: Pizza = data.pizza;
-      this.radioValue = pizza.size[0].value;
+      this.pizzaSizeArray = pizza.size;
+
+      const currentSelectedSize = _.filter(this.pizzaSizeArray, {'isSelected': true});
+      this.selectedPizzaSize = currentSelectedSize[0].value;//should always be one in the array
       this.initialPizzaImage = pizza.typeOfImage.initialPizzaImage;
     });
   }
 
-  selected(size: string) {
-    console.log('size:', size);
-    this.store.dispatch(new PizzaAction.SelectAPizzaSize(size));
+  onSelectSize(size: string) {
+    let selectedSize: PizzaSize[] = _.filter(this.pizzaSizeArray, {'value': size});
+    let selectedSizeUpdated = {...selectedSize[0], isSelected: true}
+    this.store.dispatch(new PizzaAction.SelectAPizzaSize(selectedSizeUpdated));
   }
 
   pre(): void {
@@ -63,6 +68,12 @@ export class PizzaComponent implements OnInit, OnDestroy {
         this.selectedCheeeses = toppings.selectedCheeses;
         this.selectedMeats = toppings.selectedMeats;
         this.selectedVeggies = toppings.selectedVeggies;
+      });
+
+      this.pizzaSubscription = this.store.select('pizzaReducer').subscribe(data => {
+        const pizzaSizes: PizzaSize[] = data.pizza.size;
+        const selectedPizzaSize = _.filter(pizzaSizes, {isSelected: true});
+        console.log(selectedPizzaSize);
       });
     }
   }
