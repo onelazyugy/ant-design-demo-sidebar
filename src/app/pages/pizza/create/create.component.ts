@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Pizza, PizzaSize } from 'src/app/model/pizza.model';
 import * as PizzaAction from './store/pizza.action';
 import _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -32,7 +33,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   toppingSubscription: Subscription;
   pizzaSubscription: Subscription;
   
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>, private router: Router) { }
 
   ngOnInit() {
     //load data for Topping compnent
@@ -81,6 +82,7 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   checkout(): void {
     console.log('checking out...');   
+    this.router.navigate(['pizza/checkout']);
   }
 
   ngOnDestroy(): void {
