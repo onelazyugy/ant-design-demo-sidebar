@@ -17,6 +17,7 @@ export class PizzaComponent implements OnInit, OnDestroy {
   //data for pizza component
   pizzaSizeArray: PizzaSize[] = [];
   selectedPizzaSize = '';
+  finalSelectedPizzaSize = '';
   initialPizzaImage = '';
 
   //data for Topping component
@@ -72,8 +73,8 @@ export class PizzaComponent implements OnInit, OnDestroy {
 
       this.pizzaSubscription = this.store.select('pizzaReducer').subscribe(data => {
         const pizzaSizes: PizzaSize[] = data.pizza.size;
-        const selectedPizzaSize = _.filter(pizzaSizes, {isSelected: true});
-        console.log(selectedPizzaSize);
+        const finalSelectedPizzaSize: PizzaSize[] = _.filter(pizzaSizes, {isSelected: true});//guarantee to be 1 at all time
+        this.finalSelectedPizzaSize = finalSelectedPizzaSize[0].label;
       });
     }
   }
