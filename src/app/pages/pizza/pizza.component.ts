@@ -21,6 +21,8 @@ export class PizzaComponent implements OnInit, OnDestroy {
   selectedVeggies: Ingredient[];
 
   toppingSubscription: Subscription;
+
+  // price, pizze image
   
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -47,8 +49,8 @@ export class PizzaComponent implements OnInit, OnDestroy {
     }
   }
 
-  done(): void {
-    console.log('done');   
+  checkout(): void {
+    console.log('checking out...');   
   }
 
   ngOnDestroy(): void {
