@@ -3,7 +3,7 @@ import { Ingredient } from 'src/app/model/ingredient.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
 import { Subscription } from 'rxjs';
-import { Pizza, PizzaSize } from 'src/app/model/pizza.model';
+import { Pizza, PizzaSize, DeliveryType } from 'src/app/model/pizza.model';
 import * as PizzaAction from './store/pizza.action';
 import _ from 'lodash';
 import { Router } from '@angular/router';
@@ -19,7 +19,12 @@ export class CreateComponent implements OnInit, OnDestroy {
   pizzaSizeArray: PizzaSize[] = [];
   selectedPizzaSize = '';
   finalSelectedPizzaSize = '';
+
   initialPizzaImage = '';
+
+  deliveryTypeArray: DeliveryType[] = [];
+  selectedDeliveryType = '';
+  finalSelectedDeliveryType = '';
 
   //data for Topping component
   cheeses: Ingredient[];
@@ -46,10 +51,16 @@ export class CreateComponent implements OnInit, OnDestroy {
     this.pizzaSubscription = this.store.select('pizzaReducer').subscribe(data => {
       const pizza: Pizza = data.pizza;
       this.pizzaSizeArray = pizza.size;
+      this.deliveryTypeArray = pizza.deliveryType;
 
+      //pizza size
       const currentSelectedSize = _.filter(this.pizzaSizeArray, {'isSelected': true});
       this.selectedPizzaSize = currentSelectedSize[0].value;//should always be one in the array
       this.initialPizzaImage = pizza.typeOfImage.initialPizzaImage;
+
+      //delivery type
+      const currentSelectedDeliveryType = _.filter(this.deliveryTypeArray, {'isSelected': true});
+      this.selectedDeliveryType = currentSelectedDeliveryType[0].value;
     });
   }
 
@@ -57,6 +68,13 @@ export class CreateComponent implements OnInit, OnDestroy {
     let selectedSize: PizzaSize[] = _.filter(this.pizzaSizeArray, {'value': size});
     let selectedSizeUpdated = {...selectedSize[0], isSelected: true}
     this.store.dispatch(new PizzaAction.SelectAPizzaSize(selectedSizeUpdated));
+  }
+
+  onSelectDeliveryType(deliveryType: string) {
+    console.log(deliveryType);
+    let selectedDeliveryType: DeliveryType[] = _.filter(this.deliveryTypeArray, {'value': deliveryType});
+    let selectedDeliveryTypeUpdated = {...selectedDeliveryType[0], isSelected: true}
+    this.store.dispatch(new PizzaAction.SelectADeliveryType(selectedDeliveryTypeUpdated));
   }
 
   pre(): void {
@@ -73,9 +91,15 @@ export class CreateComponent implements OnInit, OnDestroy {
       });
 
       this.pizzaSubscription = this.store.select('pizzaReducer').subscribe(data => {
+        //pizza size
         const pizzaSizes: PizzaSize[] = data.pizza.size;
         const finalSelectedPizzaSize: PizzaSize[] = _.filter(pizzaSizes, {isSelected: true});//guarantee to be 1 at all time
         this.finalSelectedPizzaSize = finalSelectedPizzaSize[0].label;
+
+        //delivery type
+        const deliveryTypes: DeliveryType[] = data.pizza.deliveryType;
+        const finalSelectedDeliveryType: DeliveryType[] = _.filter(deliveryTypes, {isSelected: true});//guarantee to be 1 at all time
+        this.finalSelectedDeliveryType = finalSelectedDeliveryType[0].label;
       });
     }
   }
