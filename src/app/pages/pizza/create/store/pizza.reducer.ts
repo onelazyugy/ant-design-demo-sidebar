@@ -10,7 +10,7 @@ const initlaTasks: State = {
     pizza: {
         'id': 0,
         'size': [{'id': 0, 'label': 'SMALL', 'isSelected': true, 'value': 'sm'}, {'id': 1, 'label': 'MEDIUM', 'isSelected': false, 'value': 'md'}, {'id': 2, 'label': 'LARGE', 'isSelected': false, 'value': 'lg'}],
-        'price': 0.00,
+        'price': 15.99,
         'typeOfImage': {
             'initialPizzaImage': 'assets/pizza/1pizza-no-decor.png',
             'endPizzaImage': 'assets/pizza/4pizza-final.png'

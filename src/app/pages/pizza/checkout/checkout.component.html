@@ -1,1 +1,73 @@
-<p>checkout works!</p>
+<h1 class="center-text">CHECKOUT</h1>
+<!-- <div nz-row class="center-text select-pizza-size"> -->
+<div nz-row>
+    <div nz-col class="gutter-row" [nzSpan]="12">
+        <img src="assets/pizza/box-pizza.jpg" width="100%">
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="inner-box">
+            <nz-divider nzText="Your Information" nzOrientation="left"></nz-divider>
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <label for="name">Name*</label>
+                    <nz-form-control nzErrorTip="Please input your full name!">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input formControlName="userName" placeholder="First and Last Name" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                
+                <nz-form-item>
+                    <label for="name">Phone*</label>
+                    <nz-form-control nzErrorTip="Please input your phone number!">
+                        <nz-input-group nzPrefixIcon="phone">
+                            <input type="text" nz-input formControlName="phone" placeholder="Mobile Phone" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <!-- if delivery, we need address -->
+                <nz-divider nzText="Delivery address" nzOrientation="left"></nz-divider>
+
+                <nz-divider nzText="Payment information" nzOrientation="left"></nz-divider>
+                <nz-form-item>
+                    <label for="name">Card Number*</label>
+                    <nz-form-control nzErrorTip="Please input your card number!">
+                        <nz-input-group nzPrefixIcon="credit-card">
+                            <input type="text" nz-input formControlName="cardNumber" placeholder="Card #" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <div>
+                    <div nz-col [nzSpan]="12">
+                        <nz-form-item>
+                            <label for="name">Expiration Date*</label>
+                            <nz-form-control>
+                              <nz-month-picker formControlName="expirationDate"></nz-month-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzSpan]="12">
+                        <nz-form-item>
+                            <label for="name">CVV*</label>
+                            <nz-form-control nzErrorTip="Please input your card cvv!">
+                                <nz-input-group>
+                                    <input type="text" nz-input formControlName="cvv" placeholder="CVV Number" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+                
+                <nz-form-item>
+                    <label for="name">Comment</label>
+                    <nz-form-control nzErrorTip="Please write something here!">
+                      <textarea formControlName="comment" nz-input rows="2" placeholder="write any thing"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <button nz-button class="login-form-button login-form-margin" [disabled]="!validateForm.valid" [nzType]="'primary'">PLACE ORDER</button>
+              </form>
+        </div>
+    </div>
+</div>

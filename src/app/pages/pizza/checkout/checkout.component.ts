@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  validateForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {}
+
+  submitForm(): void {
+    for (const i in this.validateForm.controls) {
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
+    }
   }
 
+  ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      userName: [null, [Validators.required]],
+      phone: [null, [Validators.required]],
+      comment: [null],
+      cardNumber: [null, [Validators.required]],
+      expirationDate: [null, [Validators.required]],
+      cvv: [null, [Validators.required]]
+    });
+  }
 }

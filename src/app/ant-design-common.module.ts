@@ -6,6 +6,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
     declarations: [],
@@ -16,7 +18,9 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
         NzIconModule,
         NzGridModule,
         NzDividerModule,
-        NzRadioModule
+        NzRadioModule,
+        NzFormModule,
+        NzDatePickerModule
     ]
 })
 export class AntDesignCommonModule {}
