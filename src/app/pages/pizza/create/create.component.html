@@ -11,7 +11,7 @@
     <div *ngIf="current === 0">
         <div nz-row class="center-text select-pizza-size">
             <div nz-col class="gutter-row" [nzSpan]="12">
-                <h3>Selected Pizza Size</h3>
+                <h3>Select Pizza Size</h3>
                 <nz-radio-group [(ngModel)]="selectedPizzaSize" (ngModelChange)="onSelectSize($event)" *ngFor="let size of pizzaSizeArray">
                     <label nz-radio nzValue="{{size.value}}">{{size.label}}</label>
                 </nz-radio-group>

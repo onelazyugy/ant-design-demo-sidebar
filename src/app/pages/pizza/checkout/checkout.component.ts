@@ -33,14 +33,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
-      phone: [null, [Validators.required]],
-      comment: [null],
-      cardNumber: [null, [Validators.required]],
-      expirationDate: [null, [Validators.required]],
-      cvv: [null, [Validators.required]]
-    });
     this.toppingSubscription = this.store.select('toppingReducer').subscribe(toppings => {
       const totalSelectedCheeses: number = toppings.selectedCheeses.length;
       const totalSelectedMeats: number = toppings.selectedMeats.length;
@@ -49,8 +41,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       const totalCheeseCost = totalSelectedCheeses * .70;
       const totalVeggieCost = totalSelectedVeggies * .80;
       const subtotal = totalMeatCost + totalCheeseCost + totalVeggieCost; //not calculate pizza base price yet
-      const totalTax = null;
-      const totalDue = null;
 
       this.orderSummary = {
         totalSelectedMeatTopping: totalSelectedMeats,
@@ -64,7 +54,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         subtotal: subtotal,
         taxPercent: '7%',
         totalTax: null,
-        totalDue: null
+        totalDue: null,
+        deliveryType: null
       }
     });
 
@@ -80,7 +71,26 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       const newTotalTax = newSubTotal * .07;
       this.orderSummary.totalTax = newTotalTax;
       this.orderSummary.totalDue = newTotalTax + newSubTotal;
+
+
+      const currentSelectedDeliveryType = _.filter(data.pizza.deliveryType, {'isSelected': true});
+      this.orderSummary.deliveryType = currentSelectedDeliveryType[0].value;
     });
+    const validateAddress = this.orderSummary.deliveryType === 'delivery'? true: false;
+    this.validateForm = this.fb.group({
+      userName: [null, [Validators.required]],
+      phone: [null, [Validators.required]],
+      comment: [null],
+      cardNumber: [null, [Validators.required]],
+      expirationDate: [null, [Validators.required]],
+      cvv: [null, [Validators.required]],
+      address: [null, []]
+    });
+
+    if(validateAddress) {
+      this.validateForm.controls["address"].setValidators(Validators.required);
+      this.validateForm.controls["address"].updateValueAndValidity();
+    }
   }
 
   ngOnDestroy(): void {

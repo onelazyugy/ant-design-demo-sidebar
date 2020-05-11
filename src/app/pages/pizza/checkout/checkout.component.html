@@ -44,9 +44,18 @@
                 </nz-form-control>
             </nz-form-item>
 
-            <!-- if delivery, we need address -->
-            <nz-divider nzText="Delivery Address" nzOrientation="left"></nz-divider>
-
+            <div *ngIf="orderSummary.deliveryType === 'delivery'">
+                <!-- if delivery, we need address -->
+                <nz-divider nzText="Delivery Address" nzOrientation="left"></nz-divider>
+                <nz-form-item>
+                    <label for="name">Address*</label>
+                    <nz-form-control nzErrorTip="Please input your address">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input formControlName="address" placeholder="Address" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
             <nz-divider nzText="Payment information" nzOrientation="left"></nz-divider>
             <nz-form-item>
                 <label for="name">Card Number*</label>

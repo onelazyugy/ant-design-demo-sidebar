@@ -11,4 +11,5 @@ export class OrderSummary {
     taxPercent: string;
     totalTax: number;
     totalDue: number;
+    deliveryType: string;
 }
