@@ -10,6 +10,8 @@ import { ChoresComponent } from './pages/chores/chores.component';
 import { PizzaComponent } from './pages/pizza/pizza.component';
 import { CheckoutComponent } from './pages/pizza/checkout/checkout.component';
 import { CreateComponent } from './pages/pizza/create/create.component';
+import { CompleteComponent } from './pages/pizza/checkout/complete/complete.component';
+import { StartComponent } from './pages/pizza/checkout/start/start.component';
 
 const routes: Routes = [
   {
@@ -45,7 +47,15 @@ const routes: Routes = [
     component: PizzaComponent,
     children: [
       {path: '', component: CreateComponent}, // if user navigate to /pizza, it will render CreateComponent
-      {path: 'checkout', component: CheckoutComponent},
+      {
+        path: 'checkout', 
+        component: CheckoutComponent,
+        children: [
+          // {path: 'start', component: StartComponent},
+          {path: '', component: StartComponent},
+          {path: 'complete', component: CompleteComponent}
+        ]
+      },
     ]
   }
 ];

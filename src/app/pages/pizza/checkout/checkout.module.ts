@@ -4,6 +4,8 @@ import { CheckoutComponent } from './checkout.component';
 import { AntDesignCommonModule } from 'src/app/ant-design-common.module';
 import { ShareModule } from 'src/app/share/share.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CompleteModule } from './complete/complete.module';
+import { StartModule } from './start/start.module';
 
 @NgModule({
   declarations: [CheckoutComponent],
@@ -12,7 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShareModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CompleteModule,
+    StartModule
   ]
 })
 export class CheckoutModule { }
