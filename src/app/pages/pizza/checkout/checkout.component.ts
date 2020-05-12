@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   totalSelectedMeats: number;
   totalSelectedVeggies: number;
   
+  aptStFloorOptions: any = ['None', 'Apt', 'Suite', 'Floor'];
 
   constructor(private fb: FormBuilder, private store: Store<fromApp.AppState>) {}
 
@@ -77,6 +78,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.orderSummary.deliveryType = currentSelectedDeliveryType[0].value;
     });
     const validateAddress = this.orderSummary.deliveryType === 'delivery'? true: false;
+    
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       phone: [null, [Validators.required]],
@@ -84,12 +86,24 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       cardNumber: [null, [Validators.required]],
       expirationDate: [null, [Validators.required]],
       cvv: [null, [Validators.required]],
-      address: [null, []]
+      zipCodeForPayment: [null, [Validators.required]],
+      // for delivery address
+      address: [null, []],
+      aptStFloor: [null],
+      aptStFloorSelect: [null],
+      zipCodeForDeliveryAddress: [null, []]
     });
 
+    //set select default
+    this.validateForm.controls['aptStFloorSelect'].setValue('None', {onlySelf: true});
+
+    //delivery, we need to validate
     if(validateAddress) {
       this.validateForm.controls["address"].setValidators(Validators.required);
       this.validateForm.controls["address"].updateValueAndValidity();
+
+      this.validateForm.controls["zipCodeForDeliveryAddress"].setValidators(Validators.required);
+      this.validateForm.controls["zipCodeForDeliveryAddress"].updateValueAndValidity();
     }
   }
 
