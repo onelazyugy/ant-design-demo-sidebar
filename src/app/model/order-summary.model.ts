@@ -1,4 +1,5 @@
 export class OrderSummary {
+    orderId: number;
     totalSelectedMeatTopping: number;
     totalCostForSelectedMeatTopping: number;
     totalSelectedVeggieTopping: number;

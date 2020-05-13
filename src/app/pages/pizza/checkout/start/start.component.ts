@@ -7,7 +7,7 @@ import { OrderSummary } from 'src/app/model/order-summary.model';
 import { PizzaSize } from 'src/app/model/pizza.model';
 import _ from 'lodash';
 import { Router } from '@angular/router';
-import { ResetStoreTask } from './store/start.action';
+import { ResetStoreTask, StoreOrderSummaryTask } from './store/start.action';
 
 @Component({
   selector: 'app-checkout',
@@ -36,6 +36,10 @@ export class StartComponent implements OnInit, OnDestroy {
     //clear the store on submit payment...similar to logout
     this.store.dispatch(new ResetStoreTask())
     //end clear store
+    //store the order summary 
+    console.log('submitForm: ', this.orderSummary);
+    this.store.dispatch(new StoreOrderSummaryTask(this.orderSummary));
+    //end store order summary
     this.router.navigate(['pizza/checkout/complete']);
   }
 
@@ -50,6 +54,7 @@ export class StartComponent implements OnInit, OnDestroy {
       const subtotal = totalMeatCost + totalCheeseCost + totalVeggieCost; //not calculate pizza base price yet
 
       this.orderSummary = {
+        orderId: (Math.floor(Math.random()*90000) + 10000),
         totalSelectedMeatTopping: totalSelectedMeats,
         totalCostForSelectedMeatTopping: totalMeatCost,
         totalSelectedVeggieTopping: totalSelectedVeggies,
@@ -84,6 +89,9 @@ export class StartComponent implements OnInit, OnDestroy {
       this.orderSummary.deliveryType = currentSelectedDeliveryType[0].value;
     });
     const validateAddress = this.orderSummary.deliveryType === 'delivery'? true: false;
+    
+    
+    console.log('onInit: ', this.orderSummary);
     
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],

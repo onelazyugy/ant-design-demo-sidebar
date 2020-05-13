@@ -3,6 +3,7 @@ import * as fromApp from '../../../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Pizza } from 'src/app/model/pizza.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-complete',
@@ -11,15 +12,18 @@ import { Pizza } from 'src/app/model/pizza.model';
 })
 export class CompleteComponent implements OnInit, OnDestroy {
   pizzaSubscription: Subscription;
-  pizzaId: number;
-  test: number;
+  orderId: number;
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private router: Router, private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    this.pizzaSubscription = this.store.select('pizzaReducer').subscribe(data => {
-      this.pizzaId = data.pizza.id;
+    this.pizzaSubscription = this.store.select('startReducer').subscribe(data => {
+      this.orderId = data.orderSummary.orderId;
     });
+  }
+
+  startNewOrder() {
+    this.router.navigate(['/pizza']);
   }
 
   ngOnDestroy(): void {
