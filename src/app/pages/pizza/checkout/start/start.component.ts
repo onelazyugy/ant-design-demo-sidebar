@@ -7,6 +7,7 @@ import { OrderSummary } from 'src/app/model/order-summary.model';
 import { PizzaSize } from 'src/app/model/pizza.model';
 import _ from 'lodash';
 import { Router } from '@angular/router';
+import { ResetStoreTask } from './store/start.action';
 
 @Component({
   selector: 'app-checkout',
@@ -32,6 +33,9 @@ export class StartComponent implements OnInit, OnDestroy {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+    //clear the store on submit payment...similar to logout
+    this.store.dispatch(new ResetStoreTask())
+    //end clear store
     this.router.navigate(['pizza/checkout/complete']);
   }
 
