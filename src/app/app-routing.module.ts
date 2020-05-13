@@ -51,7 +51,6 @@ const routes: Routes = [
         path: 'checkout', 
         component: CheckoutComponent,
         children: [
-          // {path: 'start', component: StartComponent},
           {path: '', component: StartComponent},
           {path: 'complete', component: CompleteComponent}
         ]

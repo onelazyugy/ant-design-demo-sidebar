@@ -105,7 +105,6 @@ export class CreateComponent implements OnInit, OnDestroy {
   }
 
   checkout(): void {
-    console.log('checking out...');   
     this.router.navigate(['pizza/checkout']);
   }
 
