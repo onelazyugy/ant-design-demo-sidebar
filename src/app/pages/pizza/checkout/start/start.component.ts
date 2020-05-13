@@ -33,13 +33,10 @@ export class StartComponent implements OnInit, OnDestroy {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+    const orderSummaryCopied = {...this.orderSummary};
     //clear the store on submit payment...similar to logout
-    this.store.dispatch(new ResetStoreTask())
-    //end clear store
-    //store the order summary 
-    console.log('submitForm: ', this.orderSummary);
-    this.store.dispatch(new StoreOrderSummaryTask(this.orderSummary));
-    //end store order summary
+    this.store.dispatch(new ResetStoreTask());
+    this.store.dispatch(new StoreOrderSummaryTask(orderSummaryCopied));
     this.router.navigate(['pizza/checkout/complete']);
   }
 
