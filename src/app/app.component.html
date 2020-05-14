@@ -8,11 +8,11 @@
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
+        <h1>LV Pizzeria</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <!-- <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/">Welcome</a>
@@ -32,26 +32,21 @@
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/sleep">Sleep</a>
           </li>
-        </ul>
-        <!-- <ul
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/">Welcome</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Login</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
-          </li>
-        </ul> -->
-      </li>
-      <!-- <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a routerLink="/pizza">Pizza</a>
           </li>
         </ul>
       </li> -->
+      <li nz-submenu nzTitle="Pizza" nzIcon="appstore" [nzOpen]="true">
+        <ul>
+          <li nz-menu-item>
+            <a routerLink="/pizza">Create Pizza</a>
+          </li>
+          <li routerLink="/pizza/summary" nz-menu-item>
+            <a routerLink="/pizza/summary">Summary</a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>

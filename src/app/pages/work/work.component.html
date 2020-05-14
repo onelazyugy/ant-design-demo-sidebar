@@ -1,1 +1,8 @@
 <p>work works!</p>
+<button nz-button nzType="primary" (click)="addMultipleTasks()">ADD MULTIPLE TASKS</button>
+
+<hr />
+<h1>Tasks</h1>
+<div *ngFor="let task of (tasks | async).tasks; let i = index">
+    {{task}}
+</div>

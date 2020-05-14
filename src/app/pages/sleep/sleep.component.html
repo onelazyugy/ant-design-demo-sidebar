@@ -1,1 +1,9 @@
 <p>sleep works!</p>
+<h1>Tasks</h1>
+<div *ngFor="let task of (tasks | async).tasks; let i = index">
+    {{task}}
+</div>
+<hr />
+<button nz-button nzType="primary" (click)="addSleepTask()">ADD SLEEP TASK</button>
+<br/><br/>
+<button nz-button nzType="primary" (click)="deleteSleepTask()">DELETE SLEEP TASK</button>

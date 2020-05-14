@@ -1,1 +1,5 @@
 <p>eat works!</p>
+<h1>Sleep Tasks</h1>
+<div *ngFor="let task of (tasks | async).tasks; let i = index">
+    {{task}}
+</div>

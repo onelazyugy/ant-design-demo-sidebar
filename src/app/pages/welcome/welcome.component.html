@@ -11,3 +11,22 @@ welcome page<br />
 <hr />
 <p>{{'Share component below'|uppercaseTextPipe}}</p>
 <app-share></app-share>
+
+<hr />
+<h1>Tasks</h1>
+<div *ngFor="let task of (tasks | async).tasks; let i = index">
+    {{task}}
+</div>
+
+<hr />
+<h1>Deleted Tasks</h1>
+<div>
+    <div *ngFor="let deletedTask of (tasks | async).deletedTasks; let i = index">
+        {{deletedTask}}
+    </div>
+</div>
+
+<hr />
+<h1>Test NGRX Effect</h1>
+<button nz-button nzType="primary" (click)="testEffects()">TEST EFFECTS</button>
+<p>{{welcomeMessageDisplay}}</p>
