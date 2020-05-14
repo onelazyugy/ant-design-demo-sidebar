@@ -9,6 +9,6 @@ export class ResetStoreTask implements Action {
 
 export class StoreOrderSummaryTask implements Action {
     readonly type = STORE_ORDER_SUMMARY;
-    constructor(public payload: OrderSummary){}
+    constructor(public payload: OrderSummary[]){}
 }
 export type StartTaskActions = ResetStoreTask | StoreOrderSummaryTask;

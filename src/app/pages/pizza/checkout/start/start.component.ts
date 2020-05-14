@@ -16,6 +16,7 @@ import { ResetStoreTask, StoreOrderSummaryTask } from './store/start.action';
 })
 export class StartComponent implements OnInit, OnDestroy {
   toppingSubscription: Subscription;
+  startSubscription: Subscription;
   validateForm: FormGroup;
 
   orderSummary: OrderSummary;
@@ -33,10 +34,15 @@ export class StartComponent implements OnInit, OnDestroy {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    const orderSummaryCopied = {...this.orderSummary};
+    const orderSummaryCopied: OrderSummary[] = [this.orderSummary];
+    let currentSummaries: OrderSummary[] = [];
+    this.startSubscription = this.store.select('startReducer').subscribe(data => {
+      currentSummaries = [...data.orderSummaries, ...orderSummaryCopied];
+    });
+    const entireOrderSummaries = [...currentSummaries];//is because after ResetStoreTask(), currentSummaries loses the latest order summary
     //clear the store on submit payment...similar to logout
     this.store.dispatch(new ResetStoreTask());
-    this.store.dispatch(new StoreOrderSummaryTask(orderSummaryCopied));
+    this.store.dispatch(new StoreOrderSummaryTask(entireOrderSummaries));
     this.router.navigate(['pizza/checkout/complete']);
   }
 
@@ -87,9 +93,6 @@ export class StartComponent implements OnInit, OnDestroy {
     });
     const validateAddress = this.orderSummary.deliveryType === 'delivery'? true: false;
     
-    
-    console.log('onInit: ', this.orderSummary);
-    
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       phone: [null, [Validators.required]],
@@ -119,6 +122,11 @@ export class StartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.toppingSubscription.unsubscribe();
+    if(this.toppingSubscription !== undefined) {
+      this.toppingSubscription.unsubscribe();
+    }
+    if(this.startSubscription !== undefined) {
+      this.startSubscription.unsubscribe();
+    }
   }
 }

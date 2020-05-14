@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as fromApp from '../../../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { Pizza } from 'src/app/model/pizza.model';
 import { Router } from '@angular/router';
+import _ from 'lodash';
+import { OrderSummary } from 'src/app/model/order-summary.model';
 
 @Component({
   selector: 'app-complete',
@@ -18,7 +19,8 @@ export class CompleteComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.pizzaSubscription = this.store.select('startReducer').subscribe(data => {
-      this.orderId = data.orderSummary.orderId;
+      const lastItem: OrderSummary = _.last(data.orderSummaries);
+      this.orderId = lastItem.orderId;
     });
   }
 
@@ -27,7 +29,9 @@ export class CompleteComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.pizzaSubscription.unsubscribe();
+    if(this.pizzaSubscription !== undefined) {
+      this.pizzaSubscription.unsubscribe();
+    }
   }
 
 }

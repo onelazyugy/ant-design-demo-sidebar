@@ -109,7 +109,11 @@ export class CreateComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.toppingSubscription.unsubscribe();
-    this.pizzaSubscription.unsubscribe();
+    if(this.toppingSubscription !== undefined) {
+      this.toppingSubscription.unsubscribe();
+    }
+    if(this.pizzaSubscription !== undefined) {
+      this.pizzaSubscription.unsubscribe();
+    }
   }
 }

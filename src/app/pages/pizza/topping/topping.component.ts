@@ -36,6 +36,8 @@ export class ToppingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.toppingSubscription.unsubscribe();
+    if(this.toppingSubscription !== undefined) {
+      this.toppingSubscription.unsubscribe();
+    }
   }
 }
