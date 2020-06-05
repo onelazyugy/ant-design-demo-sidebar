@@ -13,6 +13,7 @@ import { CreateComponent } from './pages/pizza/create/create.component';
 import { CompleteComponent } from './pages/pizza/checkout/complete/complete.component';
 import { StartComponent } from './pages/pizza/checkout/start/start.component';
 import { SummaryComponent } from './pages/pizza/summary/summary.component';
+import { DirectiveComponent } from './pages/directive/directive.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'chores',
     component: ChoresComponent
+  },
+  {
+    path: 'directive',
+    component: DirectiveComponent
   },
   {
     path: 'pizza',

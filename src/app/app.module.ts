@@ -25,12 +25,13 @@ import { WelcomeEffects } from './pages/welcome/store/welcome.effects';
 import { PizzaModule } from './pages/pizza/pizza.module';
 import { environment } from 'src/environments/environment';
 import { clearState } from './pages/pizza/checkout/start/store/start.reducer';
+import { DirectiveModule } from './pages/directive/directive.module';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,8 @@ registerLocaleData(en);
     EatModule,
     SleepModule,
     ChoresModule,
-    PizzaModule
+    PizzaModule,
+    DirectiveModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
